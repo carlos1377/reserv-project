@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from reserv.forms import RegisterForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import auth
-# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -80,3 +80,9 @@ def register_login(request):
         'reserv/register.html',
         context
     )
+
+
+@login_required(login_url='reserv:login')
+def logout(request):
+    auth.logout(request)
+    return redirect('reserv:login')
