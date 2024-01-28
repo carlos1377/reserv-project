@@ -1,0 +1,43 @@
+<div class="container">
+    <form action="{{ form_action }}" method="POST" class="mx-auto">
+        {% csrf_token %}
+
+        {% for field in form %}
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                <div class="invalid-feedback">
+                    {% for error in field.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% if field.help_text %}
+                <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+
+        {% if form.non_field_errors %}
+        <div class="form-group">
+            <div class="alert alert-danger" role="alert">
+                {% for error in form.non_field_errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+        {% if page == 'login' %}
+        <div class="form-group">
+            <a href="{% url "reserv:register" %}">Register</a>
+        </div>
+        {% endif %}
+    </form>
+</div>

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Reserva de Eventos</a>
+    <a class="navbar-brand" href="#">Reserv</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -7,17 +7,51 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
+            {% if page == 'home' %}
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="{% url "reserv:index" %}">Home</a>
             </li>
+            {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="#">Eventos</a>
+                <a class="nav-link" href="{% url "reserv:index" %}">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Reservas</a>
+            {% endif %}
+            {% if page == 'eventos' %}
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url "reserv:eventos" %}">Eventos</a>
             </li>
+            {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="#">Sobre</a>
+                <a class="nav-link" href="{% url "reserv:eventos" %}">Eventos</a>
+            </li>
+            {% endif %}
+            {% if page == 'reservas' %}
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url "reserv:reserva" %}">Reservas</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "reserv:reserva" %}">Reservas</a>
+            </li>
+            {% endif %}
+            {% if page == 'login' %}
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url "reserv:login" %}">Login</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "reserv:login" %}">Login</a>
+            </li>
+            {% endif %}
+            {% if page == 'register' %}
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url "reserv:register" %}">Register</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url "reserv:register" %}">Register</a>
+            </li>
+            {% endif %}
             </li>
         </ul>
     </div>

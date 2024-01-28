@@ -1,0 +1,21 @@
+{% extends "global/base.html" %}
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2>Bem-vindo ao Reserv</h2>
+                <p>Página de login</p>
+            </div>
+            {% if user.is_authenticated %}
+            <div class="col-md-6 offset-md-3">
+                <p>
+                    Você fez login como {{user.username}}.
+                    Clique <a href="{% url "reserv:index" %}">aqui</a> para ir ao home.
+                </p>
+            </div>
+            {% else %}
+                {% include "reserv/partials/_user-form.html" %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}
